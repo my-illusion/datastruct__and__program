@@ -1,5 +1,5 @@
 function subtreeWithAllDeepest(root) {
-    
+    return helpers(root)[0]
 }
 
 function helpers(root) {
