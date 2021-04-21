@@ -23,7 +23,7 @@ function findMinKElement(num1, num2, k) {
         if(index2 === len2) {
             return num1[index1 + k - 1]
         }
-        console.log(k)
+
         if(k === 1) {
             return Math.min(num1[index1], num2[index2])
         }

@@ -4,7 +4,11 @@
 
 // 现有一个链表 -- head = [4,5,1,9]，它可以表示为:
 
-
+// 问题是无法获取上一个结点
+// 怎么解决呢
+// 链表中所有的值都是唯一的
+// 我悟了
 function deleteNode(node) {
-    
+    node.val = node.next.val
+    node.next = node.next.next
 }
