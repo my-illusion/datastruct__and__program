@@ -13,5 +13,5 @@
 // 在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。
 
 function reverseWords(s) {
-    return s.split(" ").map(i => i.reverse()).join("")
+    return s.split(" ").map(i => i.split("").reverse().join('')).join("")
 }

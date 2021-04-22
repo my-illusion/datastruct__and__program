@@ -14,7 +14,7 @@ const root = new TreeNode(
 )
 
 
-
+// 先序遍历 最先下到的深度的结点
 function findBottomLeftValue(root) {
     let maxLen = -Infinity
     let maxLeftValue

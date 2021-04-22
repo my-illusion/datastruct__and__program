@@ -34,7 +34,6 @@ function sortColors(nums) {
         }
     }
 
-    console.log(nums)
     return nums
 }
 
