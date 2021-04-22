@@ -18,29 +18,42 @@ function swap(i, j) {
     this[i] = this[i] ^ this[j]; 
 }
 
-function front(){
+function front() {
+    const len = this.length
+    return len > 0 ? this[0] : undefined
+}
 
+function back() {
+    const len = this.length
+    return len > 0 ? this[len - 1] : undefined
 }
 
 function max(...args) {
     return Math.max.apply(null, args.map(i => this[i]))
 }
 
-function sum() {
-
+function sum(fn = (a, b) => a + b) {
+    return this.reduce(fn)
 }
-
-function average() {
-
-}
-
-
-
 
 const availableMethods = {
     last,
     swap,
-    max
+    max,
+    front,
+    back
+}
+
+/** object methods */
+
+function getPath(path) {
+    if(path === void 0) return this
+
+    console.log(this)
+}
+
+const availableObjMethods = {
+    getPath
 }
 
 function optionalInject(methods) {
@@ -57,6 +70,10 @@ function injectAll() {
     Object.keys(availableMethods).forEach(method => {
         Array.prototype[method] = availableMethods[method]
     }) 
+
+    Object.keys(availableObjMethods).forEach(method => {
+        Object.prototype[method] = availableObjMethods[method]
+    })
 }
 
 const ArrayInjector = {
@@ -66,9 +83,8 @@ const ArrayInjector = {
 
 injectAll()
 
-const str = [1, 0, 3, 4]
-
-console.log( str.max(0, 1, 2) )
+const str = { name: 'xiao gang' }
+console.log(this.getPath('name'))
 
 // export {
 //     injectAll,
