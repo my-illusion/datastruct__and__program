@@ -18,6 +18,29 @@
 // A, B 两个数组的长度总是相等的，且长度的范围为 [1, 1000]。
 // A[i], B[i] 均为 [0, 2000]区间内的整数。
 
+// 设 dp[i] 表示前i个位置的元素满足严格递增状态的最小交换次数
+
+// 递推公式
+// if A[i] < A[i-1] || B[i] < B[i - 1] dp[i] = dp[i - 1] + 1
+
+// dp[1] = 0
 function minSwap(A, B) {
-    
+    const len = A.length
+    if(len < 2) return 0
+
+    const dp = new Array(len + 1).fill(0)
+
+    for(let i = 2; i <= len; i++) {
+        if(A[i - 1] < A[i - 2] || B[i - 1] < B[i - 2]) {
+            dp[i] = dp[i - 1] + 1
+        }
+    }
+    return dp[len]
 }
+
+console.log(
+    minSwap(
+        [1,3,5,4],
+        [1,2,3,7]
+    )
+)
