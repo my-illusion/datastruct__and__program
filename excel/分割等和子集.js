@@ -32,7 +32,7 @@ function canPartition(nums) {
 
     
     const dp = new Array(10001).fill(0)
-
+    // dp[j - weight[i]] + values[i]
     for(let i = 0; i < nums.length; i++) {
         for(let j = target; j >= nums[i]; j--){
             dp[j] = Math.max(dp[j], dp[j - nums[i]] + nums[i])
