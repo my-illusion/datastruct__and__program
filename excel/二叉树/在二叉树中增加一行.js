@@ -20,8 +20,8 @@ function addOneRow(root, val, depth) {
                 
                 node.left = leftNode
                 node.right = rightNode
-                break
             }
+            break
         }else{
             for(let i = 0; i < size; i++) {
                 const node  = queue.unshift()
