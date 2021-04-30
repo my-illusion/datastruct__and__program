@@ -1,12 +1,12 @@
 Promise.__proto__.myAll = function(arr) {
     const len = arr.length
-    if(len < 1) return new Promise(resolve => resolve())
+    if(len < 1) return Promise.resolve()
 
     return new Promise((resolve, reject) => {
         const result = []
         let current = 0
         for(let i = 0; i < len; i++) {
-            arr[i]
+            Promose.resolve(arr[i])
                 .then(res => {
                     result[i] = res
                     current++
