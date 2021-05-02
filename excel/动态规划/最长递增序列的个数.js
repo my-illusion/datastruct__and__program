@@ -24,7 +24,7 @@ function findNumberOfLIS(nums) {
             if(nums[j] < nums[i]){
                 if (dp[j] + 1 > dp[i]) {
                     count[i] = count[j];
-                } else if (dp[j] + 1 == dp[i]) {
+                } else if (dp[j] + 1 === dp[i]) {
                     count[i] += count[j];
                 }
                 dp[i] = Math.max(dp[i], dp[j] + 1)
