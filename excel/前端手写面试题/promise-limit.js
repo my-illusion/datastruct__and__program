@@ -1,5 +1,5 @@
 function PromiseLimit(urls, handler, limit = 3) {
-    if(urls.length < 4){
+    if(urls.length <= limit){
         return Promise.all(urls.map(url => handler(url)))
     }
 
@@ -15,3 +15,7 @@ function PromiseLimit(urls, handler, limit = 3) {
         })
     }
 }
+
+/*
+*p = p.then(res => promises[res] = handler(urls[i]).then(() => res), Promise.race(promises))
+*/
