@@ -12,7 +12,7 @@
     https://github.com/my-illusion/smart_axios.git
     3、实现echarts markLine自定义toolTip功能
     https://github.com/my-illusion/article/blob/master/echarts%20markLine%E8%87%AA%E5%AE%9A%E4%B9%89hover%E5%8A%9F%E8%83%BD.js
-    
+    4、基于div的content-editable属性实现可编辑文案编排功能
 
 权限中心服务管理系统
 
