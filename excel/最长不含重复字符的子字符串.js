@@ -13,7 +13,7 @@ function lengthOfLongestSubstring(s) {
     const dp = new Array(len).fill(0)
 
     dp[0] = 1
-    let max = - 1
+    let max = 1
     for(let i = 1; i < len; i++) {
         // 找到最近的与 s[i] 相等的元素的索引
         let j = i - 1
@@ -21,7 +21,7 @@ function lengthOfLongestSubstring(s) {
         if( j < 0 ) {
             dp[i] = dp[i - 1] + 1
         }else{
-            const d = i - j // 0 1 2 0 i - j + 1 - 1
+            const d = i - j //  i - (j + 1) + 1
             if(d <= dp[i - 1]) {
                 dp[i] = d
             }else{
