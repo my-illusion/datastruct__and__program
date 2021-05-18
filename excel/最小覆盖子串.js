@@ -19,7 +19,7 @@ function minWindow(s, t) {
 
         while(need === 0) {
             const newRes = s.substring(left, right + 1)
-            console.log(newRes)
+
             if(!res || newRes.length < res.length) res = newRes
             
             if(window.has(s[left])) {
