@@ -8,9 +8,7 @@ function removeDuplicates(nums) {
             right++
             continue
         }else{
-            left++
-            nums[left] = nums[right]
-            right++
+            nums[++left] = nums[right++]
         }
     } 
     nums.length = left + 1

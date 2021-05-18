@@ -42,26 +42,27 @@ function removeDuplicates(nums) {
 
 // 优化之后的版本
 function dup(nums) {
-    let slow = -1
-    let fast = 0
-    let prevCount = 0
+    let slow = 0
+    let fast = 1
+    let prevCount = 1
     while(fast < nums.length) {
-        if(slow >= 0 && nums[fast] === nums[slow]) {
-            if(prevCount >= 2) {
-                // 已经出现了两次的重复 当前这个要删除
-                fast++
-            }else{
+        if(nums[fast] === nums[slow]) {
+            if(prevCount < 1) {
                 prevCount++
-                nums[++slow] = nums[fast++]
+                slow++
             }
+
+            fast++
         }else{
             prevCount = 1
             nums[++slow] = nums[fast++]
         }
     }
+    nums.length = slow + 1
+    console.log(nums)
     return slow + 1
 }
 
 console.log(
-    removeDuplicates([1, 1, 2, 2, 2, 3, 3, 3])
+    dup([1, 1, 2, 2, 2, 3, 3, 3])
 )
