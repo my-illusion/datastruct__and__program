@@ -31,3 +31,18 @@ function jump(nums) {
     }
     return dp[len - 1]
 }
+
+// 贪心算法的思路
+// 求青蛙能跳到的最远位置
+
+function jump(nums) {
+    let faster = 0
+    for(let i = 0; i < nums.length - 1; i++) {
+        faster = Math.max(faster, i + nums[i])
+
+        if(faster <= i) {
+            return false
+        }
+    }
+    return faster >= nums.length - 1
+}
