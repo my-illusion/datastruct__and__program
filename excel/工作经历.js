@@ -25,5 +25,6 @@
     2、为了加速首屏渲染速度，开发滚动加载组件避免初始加载时不在视窗内的组件的渲染
     https://codepen.io/my-illusion/pen/vYxXjzz?editors=1011
     3、基于antd-design的tree以及react-virtualized实现虚拟滚动，解决组件交互卡顿问题
+    4、基于webpack-bundle-analyzer以及lighthouse评测工具做系统体验优化
     
 
