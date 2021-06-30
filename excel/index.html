@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+    <style>
+        .avator {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: aquamarine;
+            position: relative;
+        }
+
+        .avator-item {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: red;
+
+        }
+
+        .avator-item-5 {
+            left: calc(50% - 2px);
+            top: calc(50% - 2px);
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="avator">
+        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F16%2F07%2F03%2F175778e00885381.jpg%21rw400&refer=http%3A%2F%2Fbpic.588ku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627654521&t=43963163bec221c8ffb660761e41f328"/>
+        <div class="avator-item avator-item-0"></div>
+        <div class="avator-item avator-item-1"></div>
+        <div class="avator-item avator-item-2"></div>
+        <div class="avator-item avator-item-3"></div>
+        <div class="avator-item avator-item-4"></div>
+
+        <div class="avator-item avator-item-5"></div>
+    </div>
+
+    <script>
+        new Array(5).fill().map((_, index) => {
+            const dom = document.querySelector(`.avator-item-${index}`)
+            dom.style.left = `calc(50% - 2px + ${100 * Math.sin(index * Math.PI * 2 / 5)}px)`
+            dom.style.top = `calc(50% - 2px - ${100 * Math.cos(index * Math.PI * 2 / 5)}px)`
+        })
+    </script>
+</body>
+</html>
