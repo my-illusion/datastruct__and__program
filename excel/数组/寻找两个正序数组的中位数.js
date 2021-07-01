@@ -35,7 +35,7 @@ function findMinKElement(num1, num2, k) {
         let pivot2 = num2[newIndex2]
 
         if(pivot1 <= pivot2) {
-            k -= newIndex1 - index1 + 1
+            k -= newIndex1 - index1 + 1  
             index1 = newIndex1 + 1
         }else{
             k -= newIndex2 - index2 + 1
