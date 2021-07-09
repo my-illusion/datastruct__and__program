@@ -46,3 +46,34 @@ function threeSum(nums) {
     return result
 }
 
+function threeSum(nums) {
+    const result = []
+    nums.sort((a, b) => a - b)
+    for(let i = 0, len = nums.length; i < len - 2; i++) {
+        if(nums[i] > 0) return result
+        if(i > 0 && nums[i] === nums[i-1]) continue
+
+        let left = i + 1
+        let right = len - 1
+
+        while(left < right) {
+            const curSum = nums[i] + nums[left] + nums[right]
+            if(curSum > 0) {
+                right--
+            }else if(curSum < 0) {
+                left++
+            }else{
+                result.push([
+                    nums[i],
+                    nums[left],
+                    nums[right]
+                ])
+
+                while(left < right && nums[right] === nums[--right]);
+                while(left < right && nums[left] === nums[++left]);
+            }
+        }
+    }
+
+    return result
+}
