@@ -18,3 +18,21 @@ fn()
 fn()
 fn()
 fn()
+
+
+function debounce(fn, delay) {
+    var timer;
+    return function () {
+        var context = this;
+        var args = arguments;
+
+        if(timer) {
+            clearTimeout(timer);
+        }
+
+        timer = setTimeout(() => {
+            fn.apply(context, args);
+            timer = null;
+        }, delay);
+    }
+}
