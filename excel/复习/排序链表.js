@@ -4,7 +4,7 @@ function sortList(head) {
     if(!head || !head.next) return head
 
     const middle = findMiddleNode(head)
-    
+
     // 断开链接
     let right = middle.next
     middle.next = null
@@ -59,14 +59,12 @@ function mergeList(left, right) {
 
 function findMiddleNode(head) {
     let slow = head
-    let fast = head
+    let fast = head.next
 
-    while(fast){
+    while(fast && fast.next){
+        fast = fast.next
         fast = fast.next
         slow = slow.next
-        if(fast) {
-            fast = fast.next
-        }
     }
     return slow
 }
