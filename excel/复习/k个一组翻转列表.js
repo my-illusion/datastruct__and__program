@@ -1,10 +1,10 @@
 function reverseKGroup(head, k) {
-    let i = 1
+    let i = 0
     let nextNode = head
-    while(++i <= k && nextNode) {
+    while(++i < k && nextNode) {
         nextNode = nextNode.next
     }
-    if(i < k || !nextNode) return head
+    if(!nextNode) return head
     const temp = nextNode.next
     nextNode.next = null
     let next = reverseList(head, null)
