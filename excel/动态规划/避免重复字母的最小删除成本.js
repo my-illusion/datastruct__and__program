@@ -1,0 +1,3 @@
+function minCost(s, cost) {
+    
+}
