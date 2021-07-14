@@ -1,61 +1,23 @@
 function search(nums, target) {
-    // 旋转后的数组满足前半部分的值一定大于后半部分的值
-    const start = nums[0]
-    const end = nums[nums.length - 1]
+    const len = nums.length
 
-    if(start <= end) {
-        // 没有旋转
-        // 直接二分查找
-        return binarySearch(nums, 0, nums.length - 1, target)
-    }
+    if(!len) return -1
+    if(len === 1) return nums[0] === target ? 0 : -1
 
-    // 找到截断的索引值
-    let i = 0, j = nums.length - 1;
-    while(true){
-        const k = i + ((j - i) >> 1)
-        if(nums[k] > start){
-            i = k + 1
-            if(nums[i] < start) {
-                i--
-                break
-            }
-        }else if(nums[k] < start){
-            j = k - 1
-            if(nums[j] > start) {
-                i = j
-                break
-            }
+    let left = 0, right = len - 1
+
+    while(left <= right) {
+        const mid = ((left + right) >>> 1) | 0
+        if(nums[mid] === target) return mid
+
+        if(nums[mid] >= nums[left]) {
+            // 说明在左边
+            if(target >= nums[left] && target < nums[mid]) right = mid - 1
+            else left = mid + 1
         }else{
-            i = 0
-            break
+            if(target > nums[mid] && target <= nums[nums.length - 1]) left = mid + 1
+            else right = mid - 1
         }
     }
-
-    let k = i
-    
-    // 判断值是在那部分里边
-    if(target >= start) {
-        return binarySearch(nums, 0, k, target)
-    }else{
-        return binarySearch(nums, k + 1, nums.length - 1, target)
-    }
+    return -1
 }
-
-function binarySearch(nums, start, end, target){
-    if(start > end) return -1
-
-    const middle = start + ((end - start) >> 1)
-
-    if(nums[middle] > target) {
-        return binarySearch(nums, start, middle - 1, target)
-    }else if(nums[middle] < target) {
-        return binarySearch(nums, middle + 1, end, target)
-    }else{
-        return middle
-    }
-}
-
-console.log(search(
-    [3,1],
-0
-))
