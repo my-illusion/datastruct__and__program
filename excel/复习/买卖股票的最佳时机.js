@@ -39,3 +39,20 @@ console.log(
         [7,1,5,3,6,4]
     )
 )
+
+
+// 优化版本
+function maxProfit(prices){
+    const len = prices.length
+
+    const dp = new Array(2).fill(0).map(() => new Array(2).fill(0))
+
+    dp[0][0] = -prices[0]
+
+    for(let i = 1; i < len; i++) {
+        dp[i % 2][0] = Math.max(dp[(i - 1) % 2][0], -prices[i])
+        dp[i % 2][1] = Math.max(dp[(i - 1) % 2][1], dp[(i - 1) % 2][0] + prices[i])
+    }
+
+    return dp[(len - 1) % 2][1] < 0 ? 0 : dp[(len - 1) % 2][1]
+}

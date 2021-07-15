@@ -21,7 +21,7 @@ function commonTraverse(root) {
 
         }else{
             const temp = stack.pop()
-            result.push(temp.val)
+            result.unshift(temp.val)
         }
     }
 

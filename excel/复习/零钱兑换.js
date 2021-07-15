@@ -46,3 +46,23 @@ function change(amount, coins) {
 
     return dp[amount]
 }
+
+
+function coinChange(coins, amount) {
+    // 完全背包问题 遍历顺序都可 
+    // 设 dp[i] 表示凑成总金额为i的需要的最少的硬币个数
+    const dp = new Array(amount + 1).fill(Infinity)
+    
+    // 初始化
+    dp[0] = 0
+
+    for(let i = 0, len = coins.length; i < len;  i++) {
+        for(let j = coins[i]; j <= amount; j++) {
+            if(dp[j - coins[i]] !== Infinity) {
+                dp[j] = Math.min(dp[j - coins[j]] + 1, dp[j])
+            }
+        }
+    }
+
+    return dp[amount] !== Infinity ? dp[amount] : -1
+}
