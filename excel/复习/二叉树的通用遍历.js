@@ -8,9 +8,9 @@ function preorderTraversal(root) {
             stack.push(node)
             stack.push(null)
 
-            if(node.left) stack.push(node.left)
-            
             if(node.right) stack.push(node.right)
+
+            if(node.left) stack.push(node.left)
 
         }else{
             const node = stack.pop()
