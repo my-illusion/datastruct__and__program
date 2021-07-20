@@ -33,3 +33,24 @@ function minPathSum(grid) {
 console.log(
     minPathSum([[1,2],[5,6],[1,1]])
 )
+
+
+function minPathSum(grid) {
+    const m = grid.length
+    const n = grid[0].length
+
+    // 设 dp[i][j] 表示 走到 i-1,j-1位置时的最小路径和
+    // 递推公式 d[i][j] = Math.min( dp[i-1][j], dp[i][j-1] ) + grid[i-1][j-1]
+    const dp = new Array(m  + 1).fill().map(() => new Array(n + 1).fill(0))
+    // 初始化 横向和纵向的相加
+    for(let i = 1; i <= n; i++) dp[1][i] = dp[1][i-1] + grid[0][i-1]
+
+    for(let i = 1; i <= m; i++) dp[i][1] = dp[i-1][1] + grid[i-1][0]
+
+    for(let i = 2; i <= m; i++) {
+        for( let j = 2; j <= n; j++) {
+            dp[i][j] = Math.min(dp[i-1][j], dp[i][j-1]) + grid[i-1][j-1]
+        }
+    }
+    return dp[m][n]
+}
