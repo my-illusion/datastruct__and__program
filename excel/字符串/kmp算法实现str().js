@@ -31,6 +31,10 @@ function getNext(s) {
     return next
 }
 
+// console.log(
+//     strStr('aabac', 'ba')
+// )
+
 console.log(
-    strStr('aabac', 'ba')
+    getNext('bb')
 )
