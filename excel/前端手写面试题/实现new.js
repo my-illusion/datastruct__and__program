@@ -1,5 +1,5 @@
 function myNew(fn, ...args) {
-    const obj = Object.create(null);
+    const obj = Object.create(fn.prototype);
 
     const result = fn.apply(obj, args)
 
@@ -8,4 +8,10 @@ function myNew(fn, ...args) {
     }else{
         return obj
     }
+}
+
+function create(fn) {
+    function F(){}
+    F.prototype = fn
+    return new F()
 }

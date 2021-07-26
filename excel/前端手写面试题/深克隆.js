@@ -345,3 +345,60 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
   })
   return result
 }
+
+
+
+
+
+
+
+
+
+
+
+function cloneDeep(target) {
+  const cycleMap = new Map()
+
+  function cloneFunction(target) {
+
+  }
+
+  function cloneDate(target) {
+    
+  }
+
+  function typeOf(target, type) {
+    return Object.prototype.toString.call(target).slice(8, -1).toLowerCase()
+  }
+
+
+  function baseClone(target) {
+    if(typeOf(target, 'function')) return cloneFunction(target)
+
+    if(typeOf(target, 'date')) return cloneDate(target)
+    // 判断Date
+    // 判断RegExp
+    // 判断Symbol
+    if(!isObject(target)) return target
+
+    if(cycleMap.get(target))  return cycleMap.get(target)
+
+    const result = new target.constructor
+
+    cycleMap.set(target, result)
+
+    const keys = Object.keys(target)
+
+    for(let i = 0, len = keys.length; i < len; i++) {
+      result[keys[i]] = baseClone(target[keys[i]])
+    }
+
+    return result
+  }
+
+  function isObject(target) {
+    return target !== null && typeof target === 'object'
+  }
+
+  return baseClone(target)
+}
