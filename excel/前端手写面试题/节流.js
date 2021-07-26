@@ -54,29 +54,34 @@ function throttle(fn, delay) {
     }
 }
 
-function throttle(fn, delay) {
-    let startTime = Date.now()
-    let timer = null
+// function throttle(fn, delay) {
+//     let startTime = Date.now()
+//     let timer = null
 
-    return function () {
-        const context = this
-        const args = arguments
+//     return function () {
+//         const context = this
+//         const args = arguments
 
-        const curTime = Date.now()
-        const remainning = delay - (curTime - startTime)
+//         const curTime = Date.now()
+//         const remainning = delay - (curTime - startTime)
 
-        if(timer) {
-            clearTimeout(timer)
-        }
+//         if(timer) {
+//             clearTimeout(timer)
+//         }
 
-        if(remainning <= 0) {
-            fn.apply(context, args)
-            startTime = Date.now()
-        }else{
-            timer = setTimeout(() => {
-                fn.apply(context, args)
-                timer = null
-            }, remainning)
-        }
-    }
-}
+//         if(remainning <= 0) {
+//             fn.apply(context, args)
+//             startTime = Date.now()
+//         }else{
+//             timer = setTimeout(() => {
+//                 fn.apply(context, args)
+//                 timer = null
+//             }, remainning)
+//         }
+//     }
+// }
+
+
+
+
+

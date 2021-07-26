@@ -21,7 +21,7 @@ function Promise(excutor) {
                 that.value = value
                 that.onFulfilledCallbacks.forEach(cb => cb(that.value))
             }
-        }, 0)
+        })
     }
 
     function reject(reason) {

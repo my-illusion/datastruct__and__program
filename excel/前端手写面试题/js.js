@@ -20,3 +20,22 @@ console.log(f2.getValue())
 
 var f3 = foo(1)(2)(3)(4)
 console.log(f3.getValue())
+
+
+
+var a = 1
+
+function test() {
+    console.log(a)
+}
+
+function wrapper(fn) {
+    a = 2
+    fn()
+
+    function a() {
+
+    }
+}
+
+wrapper(test)
