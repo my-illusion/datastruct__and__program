@@ -28,7 +28,7 @@ function reverseList(head, tail = null) {
 function reverseKGroup(head, k) {
     // 找到前k个结点
     let nextNode = head
-    let i = 0
+    let i = 1
 
     while(i < k && nextNode) {
         nextNode = nextNode.next

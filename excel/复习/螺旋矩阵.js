@@ -1,38 +1,18 @@
-function spiralOrder(matrix) {
-    const result = []
-
-    const m = matrix.length
-
-    const n = matrix[0].length
-
-    let i = 0, j = 0;
-
-    while(true) {
-        while(j + 1 < n && matrix[i][j+1] !== 1000) {
-            result.push(matrix[i][j])
-            matrix[i][j] = 1000
-            j++
-        }
-        while(i + 1 < m && matrix[i+1][j] !== 1000) {
-            result.push(matrix[i][j])
-            matrix[i][j] = 1000
-            i++
-        }
-        while(j - 1 >= 0 && matrix[i][j-1] !== 1000) {
-            result.push(matrix[i][j])
-            matrix[i][j] = 1000
-            j--
-        }
-        while(i - 1 >= 0 && matrix[i-1][j] !== 1000) {
-            result.push(matrix[i][j])
-            matrix[i][j] = 1000
-            i--
-        }
-
-        if(result.length === n * m - 1) {
-            result.push(matrix[i][j])
-            break
-        }
+var spiralOrder = function (matrix) {
+    if (matrix.length == 0) return []
+    const res = []
+    let top = 0, bottom = matrix.length - 1, left = 0, right = matrix[0].length - 1
+    const size = matrix.length * matrix[0].length
+    while (res.length !== size) { // 仍未遍历结束
+      for (let i = left; i <= right; i++) res.push(matrix[top][i])
+      top++
+      for (let i = top; i <= bottom; i++) res.push(matrix[i][right])
+      right--
+      if (res.length === size) break // 遍历结束
+      for (let i = right; i >= left; i--)  res.push(matrix[bottom][i])
+      bottom--
+      for (let i = bottom; i >= top; i--) res.push(matrix[i][left])
+      left++
     }
-    return result
-}
+    return res
+  };

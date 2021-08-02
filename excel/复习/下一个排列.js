@@ -11,19 +11,19 @@ function nextPermutation(nums) {
         let j = len - 1
         while(j >= 0 && nums[j] <= nums[i]) j--
 
-        swap(nums, i, j)
-    }
+        reverse(nums, i, j)
+    } 
 
-    reverse(nums, i + 1, len - 1)
-}
-
-function swap(nums, i, j) {
-    while(i < j) {
-        swap(nums, i++, j--)
-    }
+    swap(nums, i + 1, len - 1)
 }
 
 function reverse(nums, i, j) {
+    while(i < j) {
+        reverse(nums, i++, j--)
+    }
+}
+
+function swap(nums, i, j) {
     const temp = nums[i]
     nums[i] = nums[j]
     nums[j] = temp
