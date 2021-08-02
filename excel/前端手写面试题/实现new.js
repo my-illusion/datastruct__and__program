@@ -9,3 +9,9 @@ function myNew(fn, ...args) {
         return obj
     }
 }
+
+function create(fn) {
+    function F(){}
+    F.prototype = fn
+    return new F()
+}

@@ -1,19 +1,10 @@
-function instanceOf(left, right) {
-    if(typeof left !== 'object' || left === null) {
-        return false
-    }
-
-    let proto = Object.getPrototypeOf(left)
+function _instanceof(l, r) {
+    var o = r.prototype
+    l = l.__proto__
 
     while(true) {
-        if(proto === null) {
-            return false
-        }
-
-        if(proto === right) {
-            return true
-        }
-
-        proto = Object.getPrototypeOf(proto)
+        if(l === null) return false
+        if(l === o) return true
+        l = l.__proto__
     }
 }

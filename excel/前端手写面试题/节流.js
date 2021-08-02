@@ -36,7 +36,7 @@ function  throttle(fn, delay){
 // 组合的版本
 function throttle(fn, delay) {
     let timer = null
-    let startTime = Date.now()
+    let startTime = 0
     return function () {
         var context = this
         var args = arguments
@@ -44,12 +44,15 @@ function throttle(fn, delay) {
         const curTime = Date.now()
         let remainning = delay - (curTime - startTime)
         
-        clearTimeout(timer)
+        if(timer) clearTimeout(timer)
         if(remainning <= 0) {
             fn.apply(context, args)
             startTime = Date.now()
         }else{
-            timer = setTimeout(fn, remainning)
+            timer = setTimeout(() => {
+                fn.apply(context, args)
+                timer = null
+            }, remainning)
         }
     }
 }
